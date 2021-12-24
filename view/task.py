@@ -23,7 +23,7 @@ class Window2(Frame):
       self.unit_name_list = []
 
    def update(self,msg):
-      self._gid = msg['gid'] 
+      self._gid = msg['gid']
       self.unit_name_list = _global_group[msg['gid'] - 1]
       
       self._update_unit_name_list()

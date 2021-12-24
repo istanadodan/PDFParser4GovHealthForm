@@ -1,18 +1,20 @@
 import os
 from abc import ABCMeta, abstractmethod
+from model import PDFModel
+
+model=PDFModel()
 
 class PDF_template(metaclass=ABCMeta):
     result={}
     basket=[]
     body=''
-    html=''
-    model=''
+    html=''    
     filepath=''
     id=''
 
     def __init__(self, title=None):
-        if title not in PDF_template.result:
-            PDF_template.result[title] = dict()
+        if title not in self.result:
+            self.result[title] = dict()
         self.id = title
 
     @abstractmethod
@@ -28,27 +30,22 @@ class PDF_template(metaclass=ABCMeta):
         self.result[self.id] = field
 
     def find_all(self, tag='div', text=False, recursive=True):
-        self.tags = self.model.find_all(tag,text=text,recursive=recursive)
+        self.tags = model.find_all(tag,text=text,recursive=recursive)
 
-    def extract(self, keyword, nth=0):
-        tags = self.tags
-        self.basket = self.model.extract(tags, keyword, nth)
-
+    def extract(self, keyword, nth=0):        
+        self.basket = model.extract(self.tags, keyword, nth)
+  
     @classmethod
     def clear(cls):
         cls.result = {k:{} for k in cls.result.keys()}
         cls.basket = []
 
     @classmethod
-    def model(cls,model):
-        cls.model = model
-
-    @classmethod
     def to_html(cls, filepath):
         cls.filepath = filepath
-        cls.model.to_html(filepath)
-        cls.body = cls.model.body
-        cls.html = cls.model.html
+        model.to_html(filepath)
+        cls.body = model.body
+        cls.html = model.html
 
     @classmethod
     def get_result(cls):
@@ -67,7 +64,7 @@ class PDF_template(metaclass=ABCMeta):
         cls.result = {}
         cls.basket = []
         cls.body=''
-        cls.model.initialize()
+        model.initialize()
 
     def addfilename(self):
         # if 'FILE' not in cls.result:

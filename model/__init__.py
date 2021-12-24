@@ -1,1 +1,2 @@
-from .file_parser import Model
+from .txt_parser import Model as TextModel
+from .pdf_parser import Model as PDFModel

@@ -1,3 +1,3 @@
 from view.root import Root
-from view.menu import Window1
-from view.task import Window2
+from view.menu1 import Window as Window1
+from view.menu2 import Window as Window2
