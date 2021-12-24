@@ -4,8 +4,8 @@ Or parse raw data to extract tax info
 
 proceed as following
 
-  select option in the selection window
+  select tab window.
   click execution button
-  check if excel files are created correctly as you want in the directory where pdf files are.
+  check if excel files are created correctly as you want in the working directory where pdf files are.
   
 Do it!
