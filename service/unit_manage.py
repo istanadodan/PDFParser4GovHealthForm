@@ -1,3 +1,4 @@
+import importlib
 from service.unit import PDF_template
 from app import TASK_NAME, CLASS_NAME
 
@@ -45,9 +46,12 @@ class Unit_Manage:
     def create_unit(self, unit_name):
         if not self.class_map: return
 
-        module = __import__('service.unit')        
+        # # module = __import__('service.unit') 와 동일.
+        # 'unit'를 뺼 경우, service.__init__에 from .unit import * 추가가 필요.
+        module = importlib.import_module('service.unit', 'unit')
         _class_name = self.class_map[unit_name]
         __class = getattr(module, _class_name)        
+        
         return __class()
     
     def clear(self):
