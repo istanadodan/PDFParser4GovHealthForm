@@ -10,4 +10,4 @@ if __name__== "__main__":
    app.add(w1)
    app.add(w2)
    app.build()
-   app.mainloop() 
+   app.mainloop()  
