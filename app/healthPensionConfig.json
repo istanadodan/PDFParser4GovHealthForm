@@ -10,5 +10,6 @@
         "연금보험료": "PDF_unit6",
         "CHECK": "PDF_unit_check",
         "FILE": "PDF_unit_file"
-    }
+    },
+    "test":"test"
 }
