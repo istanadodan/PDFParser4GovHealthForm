@@ -1,5 +1,5 @@
 import datetime
-from .config import get_config
+from .config import get_config, get_config2
 from .context import Context
 
 context = Context()
@@ -11,6 +11,9 @@ GROUP2 = get_config('LISTBOX/group2')
 
 TASK_NAME = get_config('Class_Mapping/task_name')
 CLASS_NAME = get_config('Class_Mapping/class_name')
+
+GROUP_LST = get_config2('group')
+CLASS_MAP = get_config2('class_map')
 
 def SH_NAME(id):
     return get_config('GROUP/group%d'%id)[0]

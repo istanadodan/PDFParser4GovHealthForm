@@ -51,8 +51,9 @@ class Service:
          self.mng.file(pdf_file)       
          
          # 3. 건강 혹은 연금용 파일인지 체크
-         unit_list = self._getUnitList(_unit_list)                       
+         unit_list = self._getUnitList(_unit_list) 
          writelog('선택 유닛: %s', unit_list)
+         if unit_list is None: pass
          
          # 4. 가져올 항목취득객체를 받아 실행
          for id in unit_list:

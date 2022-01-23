@@ -1,0 +1,14 @@
+{
+    "group":["건강보험(경정고지) 내역서",
+             "국민연금(경정고지) 내역서"],
+    "class_map":{
+        "사업장(건강)": "PDF_unit1",
+        "건강보험료": "PDF_unit2",
+        "장기요양보험료": "PDF_unit3",
+        "납부할보험료": "PDF_unit4",
+        "사업장(연금)": "PDF_unit5",
+        "연금보험료": "PDF_unit6",
+        "CHECK": "PDF_unit_check",
+        "FILE": "PDF_unit_file"
+    }
+}

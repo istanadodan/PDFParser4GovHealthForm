@@ -1,9 +1,13 @@
 import importlib
 from service.unit import PDF_template
-from app import TASK_NAME, CLASS_NAME
+from app import CLASS_MAP, GROUP_LST
+
+# # module = __import__('service.unit') 와 동일.
+# 'unit'를 뺼 경우, service.__init__에 from .unit import * 추가가 필요.        
+module = importlib.import_module('service.unit', 'unit')
 
 class Unit_Manage:
-    def __init__(self):
+    def __init__(self):        
         self._register_units()
     
     def initialize(self):
@@ -38,27 +42,24 @@ class Unit_Manage:
         
     # 보고서종류 확인 키워드 축출
     def get_check_keyword(self):
-        _TASK_UNIT = "CHECK"
-        self.create_unit(_TASK_UNIT).execute()
-        return PDF_template.result[_TASK_UNIT]['type'][0]
+        check_unit_name = "CHECK"
+        check_keyword = 'type'
+        unit_obj = self.create_unit(check_unit_name)
+        if not unit_obj: return None
+        unit_obj.execute()
+        return unit_obj.result[check_unit_name][check_keyword][0]
         
     # 유닛의 인덱스에 대응되는 클래스명을 가져옴        
     def create_unit(self, unit_name):
-        if not self.class_map: return
-
-        # # module = __import__('service.unit') 와 동일.
-        # 'unit'를 뺼 경우, service.__init__에 from .unit import * 추가가 필요.
-        module = importlib.import_module('service.unit', 'unit')
-        _class_name = self.class_map[unit_name]
-        __class = getattr(module, _class_name)        
-        
-        return __class()
+        if not self.class_map or not unit_name in self.class_map:
+            return None
+        class_name = self.class_map[unit_name]        
+        _class = getattr(module, class_name) 
+        return _class()
     
     def clear(self):
         PDF_template.clear()
 
     # 항목취득객체(유닛) 목록작성
     def _register_units(self):
-        # map {unit_name: class_name}
-        _zip = zip(TASK_NAME, CLASS_NAME)
-        self.class_map = {_task_name:_class_name for _task_name, _class_name in _zip}
+        self.class_map = CLASS_MAP; 
