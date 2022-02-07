@@ -1,8 +1,15 @@
-class Context:
+class Appcontext:
    context={}
    _observers=[]   
    _cache={}   
 
+   def put(self, **data):
+      for k,v in data.items():
+         self.context[k] = v
+
+   def get(self,key):
+      return self.context.get(key,'')
+   
    def add_observer(self, observer):
       self._observers.append(observer)
 
@@ -13,14 +20,7 @@ class Context:
                 self._cache[id] = o
                 break
       return self._cache[id]
-
-   def put(self, **data):
-      for k,v in data.items():
-         self.context[k] = v
-
-   def get(self,key):
-      return self.context.get(key,'')
-   
+ 
    #(id, msg)
    def notify_all(self, *message):      
       for obj in self._observers:         

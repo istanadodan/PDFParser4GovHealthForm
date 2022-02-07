@@ -2,8 +2,7 @@ from tkinter import LabelFrame, Tk,Text,Scrollbar,Button,END,Entry,Frame,filedia
                     Listbox,Menubutton,Menu,Checkbutton, \
                     StringVar, IntVar, BooleanVar, scrolledtext, ttk, WORD
 from tkinter.constants import FLAT, INSERT
-from app import Context
-context = Context()
+from app import appcontext as context
 
 class Root(Tk):
    _frames={}
@@ -143,7 +142,7 @@ class Root(Tk):
          self.scr.insert(INSERT, log+'\n')
          self.scr.update()
          self.scr.see(END)
-      
+      #log, dir, info 명령 등록
       self._commands.update(dict(log=writelog))
       self._commands.update(dict(dir=lambda _path: self.dir_.set(_path)))
       self._commands.update(dict(info=lambda msg: self.info.set(msg)))

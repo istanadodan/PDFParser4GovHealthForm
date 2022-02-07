@@ -1,7 +1,7 @@
 import os, glob,datetime
 import pandas as pd
 from model import TextModel
-from app import SH_NAME, writelog, showinfo
+from app import writelog, showinfo
 from .telegram_vo import Body, Header
 
 class Service:

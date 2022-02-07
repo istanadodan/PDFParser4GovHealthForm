@@ -1,6 +1,8 @@
 import importlib
 from service.unit import PDF_template
-from app import CLASS_MAP, GROUP_LST
+from app import get_config
+
+CLASS_MAP = get_config('class_map')
 
 # # module = __import__('service.unit') 와 동일.
 # 'unit'를 뺼 경우, service.__init__에 from .unit import * 추가가 필요.        

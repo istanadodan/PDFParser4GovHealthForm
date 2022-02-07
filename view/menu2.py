@@ -2,11 +2,9 @@ from service import pdf_service, telegram_service
 from tkinter import Tk,Text,Scrollbar,Button,END,Entry,Frame,filedialog,Label,messagebox,\
                     Listbox,Menubutton,Menu,\
                     StringVar, IntVar, LabelFrame
-from app import writelog, showinfo,showdir, Context
+from app import appcontext as context, showdir
 from .utils import show_info, select_directory
-
 telegram_svc = telegram_service()
-context = Context()
 
 class Window(Frame):
 

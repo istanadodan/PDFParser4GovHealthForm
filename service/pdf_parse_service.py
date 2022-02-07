@@ -1,8 +1,16 @@
 import os, glob,datetime
 import pandas as pd
 from .unit_manage import Unit_Manage
-from app import SH_NAME, GROUP1, GROUP2, writelog, showinfo
+from app import get_config, writelog, showinfo
 
+GROUP_LST = get_config('group')
+GROUP1 = get_config('type')['group1']
+GROUP2 = get_config('type')['group2']
+CLASS_MAP = get_config('class_map')
+
+def SH_NAME(id=1):
+       return GROUP_LST[id-1]
+    
 class Service:
 
    def __init__(self):
@@ -26,7 +34,7 @@ class Service:
          self.mng.doc_type(0)
          return GROUP1
       if '연금' in found_keyword:
-         self.mng.doc_type(1)      
+         self.mng.doc_type(1)
          return GROUP2
       
       return None    

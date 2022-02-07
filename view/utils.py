@@ -1,7 +1,5 @@
 from tkinter import messagebox, filedialog
-from app import writelog, showinfo,showdir, Context
-
-context = Context()
+from app import showinfo, appcontext as context
 
 def select_directory():
    _dir = context.get('directory')
@@ -16,4 +14,5 @@ def show_info(msg, type='info'):
    if type=='err':
       messagebox.showerror('오류',message=msg)
    else:    
-      messagebox.showinfo("알림",message=msg)       
+      messagebox.showinfo("알림",message=msg) 
+      
