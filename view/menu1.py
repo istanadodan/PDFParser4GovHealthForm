@@ -3,9 +3,11 @@ from tkinter import Tk,Text,Scrollbar,Button,END,Entry,Frame,filedialog,Label,me
                     Listbox,Menubutton,Menu,\
                     StringVar, IntVar, BooleanVar, LabelFrame, Checkbutton
 from tkinter.constants import FLAT, SUNKEN
-from app import appcontext as context, showdir
+from app.appcontext import Appcontext
+from app import showdir
 from .utils import show_info, select_directory
 
+context = Appcontext()
 pdf_svc = pdf_service()
 
 class Window(LabelFrame):

@@ -2,7 +2,9 @@ from tkinter import LabelFrame, Tk,Text,Scrollbar,Button,END,Entry,Frame,filedia
                     Listbox,Menubutton,Menu,Checkbutton, \
                     StringVar, IntVar, BooleanVar, scrolledtext, ttk, WORD
 from tkinter.constants import FLAT, INSERT
-from app import appcontext as context
+from app.appcontext import Appcontext
+
+context = Appcontext()
 
 class Root(Tk):
    _frames={}

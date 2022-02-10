@@ -1,5 +1,7 @@
 from tkinter import messagebox, filedialog
-from app import showinfo, appcontext as context
+from app.appcontext import Appcontext
+from app import showinfo
+context = Appcontext()
 
 def select_directory():
    _dir = context.get('directory')
